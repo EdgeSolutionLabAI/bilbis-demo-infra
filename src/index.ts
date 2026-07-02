@@ -1,5 +1,5 @@
 export default {
-  fetch(_request: Request, _env: unknown, _ctx: ExecutionContext): Response {
+  fetch(): Response {
     return new Response("Hello from Bilbis", {
       headers: { "Content-Type": "text/plain" },
     });
