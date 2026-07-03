@@ -2,7 +2,10 @@ name = "acme-counter"
 main = "src/index.ts"
 compatibility_date = "2026-07-02"
 
-# The CACHE KV namespace is created during deploy; fill in `id` after creation.
+# deploy_plan: the CACHE KV namespace is CREATED (never deleted) by the Bilbis
+# platform before the first deploy; the real namespace id/preview_id are injected
+# at that time, replacing the placeholders below.
 [[kv_namespaces]]
 binding = "CACHE"
 id = "PLACEHOLDER_CACHE_KV_NAMESPACE_ID"
+preview_id = "PLACEHOLDER_CACHE_KV_NAMESPACE_PREVIEW_ID"
