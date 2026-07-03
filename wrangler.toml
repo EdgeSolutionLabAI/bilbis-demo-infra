@@ -1,3 +1,8 @@
-name = "acme-hello"
+name = "acme-counter"
 main = "src/index.ts"
 compatibility_date = "2026-07-02"
+
+# The CACHE KV namespace is created during deploy; fill in `id` after creation.
+[[kv_namespaces]]
+binding = "CACHE"
+id = "PLACEHOLDER_CACHE_KV_NAMESPACE_ID"
