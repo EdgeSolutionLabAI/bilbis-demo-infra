@@ -1,0 +1,9 @@
+name = "acme-storage"
+main = "src/index.ts"
+compatibility_date = "2026-07-02"
+
+# deploy_plan: the R2 bucket is CREATED by the Bilbis platform before the first deploy;
+# the real bucket name is injected at that time, replacing the placeholder below.
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "acme-storage-7f3e9a2c"
