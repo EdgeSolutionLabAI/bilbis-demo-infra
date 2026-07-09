@@ -261,6 +261,7 @@
         }
 
         .address {
+            font-style: normal;
             font-size: 1.05rem;
             color: var(--light-brown);
             margin-bottom: 1.5rem;
@@ -315,14 +316,33 @@
         .footer-note {
             opacity: 0.8;
         }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background-color: var(--burnt-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 0 8px 0;
+            z-index: 200;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">Kairos Coffee</div>
-            <nav>
+            <nav aria-label="Primary">
                 <a href="#menu">Menu</a>
                 <a href="#hours">Hours</a>
                 <a href="#visit">Visit</a>
@@ -330,6 +350,7 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section class="hero">
         <h1>Slow mornings, strong coffee.</h1>
@@ -415,13 +436,14 @@
     <section class="visit-section" id="visit">
         <div class="visit-content">
             <h2>Visit Us</h2>
-            <div class="address">
-                <p>542 Oak Street</p>
-                <p>Portland, Oregon 97214</p>
-            </div>
+            <address class="address">
+                542 Oak Street<br>
+                Portland, Oregon 97214
+            </address>
             <a href="tel:+15035551234" class="call-button">Call Us: (503) 555-1234</a>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
