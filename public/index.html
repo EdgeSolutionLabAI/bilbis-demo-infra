@@ -3,37 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>acme-site</title>
+    <title>Kairos Coffee – Slow mornings, strong coffee</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f5f1ed;
+            --dark-brown: #2c1810;
+            --espresso: #3d2817;
+            --burnt-orange: #c85a2f;
+            --light-brown: #8b6f47;
+            --accent-bg: #ede4d6;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--cream);
+            border-bottom: 1px solid rgba(45, 24, 16, 0.1);
+            padding: 1rem;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(45, 24, 16, 0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .container {
-            text-align: center;
-            color: white;
-        }
-        h1 {
-            font-size: 4rem;
-            margin: 0 0 1rem 0;
+
+        .logo {
+            font-size: 1.5rem;
             font-weight: 700;
+            color: var(--dark-brown);
+            letter-spacing: -0.5px;
         }
-        p {
+
+        nav a {
+            margin-left: 2rem;
+            color: var(--dark-brown);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--burnt-orange);
+        }
+
+        @media (max-width: 640px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                display: flex;
+                gap: 1.5rem;
+                width: 100%;
+                margin-top: 1rem;
+                font-size: 0.85rem;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #d4a574 0%, #c85a2f 50%, #8b6f47 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
             font-size: 1.25rem;
-            margin: 0;
+            margin-bottom: 2rem;
             opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cream);
+            color: var(--burnt-orange);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--cream);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--cream);
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Menu Section */
+        .menu-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-brown);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(45, 24, 16, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(45, 24, 16, 0.12);
+        }
+
+        .menu-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card .description {
+            color: var(--light-brown);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--burnt-orange);
+        }
+
+        @media (max-width: 640px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Hours Section */
+        .hours-section {
+            background-color: var(--accent-bg);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .hours-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hour-item {
+            text-align: center;
+        }
+
+        .hour-item .day {
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .hour-item .time {
+            color: var(--light-brown);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+            .hours-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Visit Section */
+        .visit-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .visit-content {
+            background-color: white;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(45, 24, 16, 0.08);
+            text-align: center;
+        }
+
+        .visit-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-brown);
+        }
+
+        .address {
+            font-size: 1.05rem;
+            color: var(--light-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .call-button {
+            display: inline-block;
+            background-color: var(--burnt-orange);
+            color: white;
+            padding: 0.85rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--burnt-orange);
+        }
+
+        .call-button:hover {
+            background-color: transparent;
+            color: var(--burnt-orange);
+        }
+
+        @media (max-width: 640px) {
+            .visit-content {
+                padding: 2rem;
+            }
+
+            .visit-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .address {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-note {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello from Bilbis</h1>
-        <p>A simple static landing page deployed on Cloudflare Pages</p>
-    </div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Kairos Coffee</div>
+            <nav>
+                <a href="#menu">Menu</a>
+                <a href="#hours">Hours</a>
+                <a href="#visit">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Slow mornings, strong coffee.</h1>
+        <p>A cozy neighborhood café where every cup tells a story.</p>
+        <a href="#menu" class="cta-button">See the menu</a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>Espresso</h3>
+                <p class="description">Rich, bold, and unapologetically intense. A moment of pure coffee.</p>
+                <span class="price">$3.50</span>
+            </div>
+            <div class="menu-card">
+                <h3>Flat White</h3>
+                <p class="description">Velvety microfoam meets espresso—smooth, creamy, perfect.</p>
+                <span class="price">$5.00</span>
+            </div>
+            <div class="menu-card">
+                <h3>Cold Brew</h3>
+                <p class="description">Chilled and refreshing. Smooth cold coffee brewed overnight for smoothness.</p>
+                <span class="price">$4.50</span>
+            </div>
+            <div class="menu-card">
+                <h3>Croissant</h3>
+                <p class="description">Buttery, flaky layers that melt in your mouth. Locally baked daily.</p>
+                <span class="price">$4.00</span>
+            </div>
+            <div class="menu-card">
+                <h3>Banana Bread</h3>
+                <p class="description">Moist and tender. A slice of comfort with your coffee. Made fresh.</p>
+                <span class="price">$3.50</span>
+            </div>
+            <div class="menu-card">
+                <h3>Matcha</h3>
+                <p class="description">Creamy green tea whisked to perfection. A mindful alternative.</p>
+                <span class="price">$5.50</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="hours-section" id="hours">
+        <div class="hours-container">
+            <h2 class="section-title">Hours</h2>
+            <div class="hours-grid">
+                <div class="hour-item">
+                    <div class="day">Monday</div>
+                    <div class="time">7:00 AM – 6:00 PM</div>
+                </div>
+                <div class="hour-item">
+                    <div class="day">Tuesday</div>
+                    <div class="time">7:00 AM – 6:00 PM</div>
+                </div>
+                <div class="hour-item">
+                    <div class="day">Wednesday</div>
+                    <div class="time">7:00 AM – 6:00 PM</div>
+                </div>
+                <div class="hour-item">
+                    <div class="day">Thursday</div>
+                    <div class="time">7:00 AM – 6:00 PM</div>
+                </div>
+                <div class="hour-item">
+                    <div class="day">Friday</div>
+                    <div class="time">7:00 AM – 7:00 PM</div>
+                </div>
+                <div class="hour-item">
+                    <div class="day">Saturday</div>
+                    <div class="time">8:00 AM – 7:00 PM</div>
+                </div>
+                <div class="hour-item">
+                    <div class="day">Sunday</div>
+                    <div class="time">8:00 AM – 5:00 PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Section -->
+    <section class="visit-section" id="visit">
+        <div class="visit-content">
+            <h2>Visit Us</h2>
+            <div class="address">
+                <p>542 Oak Street</p>
+                <p>Portland, Oregon 97214</p>
+            </div>
+            <a href="tel:+15035551234" class="call-button">Call Us: (503) 555-1234</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kairos Coffee. All rights reserved.</p>
+        <p class="footer-note">A cozy neighborhood café celebrating the art of coffee.</p>
+    </footer>
 </body>
 </html>
