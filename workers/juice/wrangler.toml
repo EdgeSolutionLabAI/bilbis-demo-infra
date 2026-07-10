@@ -1,0 +1,11 @@
+name = "juice"
+main = "src/index.ts"
+compatibility_date = "2026-07-02"
+
+# deploy_plan: the JUICE_KV KV namespace is CREATED (never deleted) by the Bilbis
+# platform before the first deploy; the real namespace id/preview_id are injected
+# at that time, replacing the placeholders below.
+[[kv_namespaces]]
+binding = "JUICE_KV"
+id = "PLACEHOLDER_JUICE_KV_NAMESPACE_ID"
+preview_id = "PLACEHOLDER_JUICE_KV_NAMESPACE_PREVIEW_ID"
